@@ -1,4 +1,63 @@
 
+Handover Triggering Estimation based on Fuzzy Logic for LTE-A/5G Networks with Ultra Dense Small Cells
+================================
+    Increasing spectrum efficiency in new-generation communication networks is possible by raising the operating frequencies or increasing the number of serving cells. Both of the solutions, indirectly lead to a decrease in the cell size. By shrinking the coverage area of the cells, the mobility management becomes a critical issue in order to provide seamless connectivity. The main tool for mobility management in connected mode is the handover procedure, which conventionally is triggered based on the User Equipment's (UE's) measurements of serving and neighboring cells' signal quality. The performance of the methods provided in the 3GPP standard for setting up the handover, is based on a comparison between the quality of the received signal from the serving cell and the neighbor cells, which is severely sensitive to the appropriate setting of threshold values and waiting time for setting up the handover. The remarkable methods in literature to improve the handover performance in the 3GPP standard either utilize positional information or are based on complex algorithms. Positional information parameters such as speed, location, direction of movement and etc., need extra measurement modules. Also, complex algorithms like deep learning, are not suitable for a wide range of active devices in 5G networks with limited resources.
+    In this paper, a novel fuzzy logic-based method is proposed to trigger the handover procedure based on estimated serving cell's and neighbor cells' Radio Link Quality (RLQ) values. The proposed system consists of two stages. A second order regressor beside a simple fuzzy logic system is introduced to predict the serving cell's and neighbor cells' RLQ. The final handover trigger decision is made with the help of another cascade fuzzy logic system, which is responsible for eliminating too-early, too-late, and ping-pong handovers.
+    Considering the uncertainty handling feature of the interval type II fuzzy logic systems versus type I, we implement both methods and compare their results. Finally, we simulate the proposed algorithm using the ns-3 LTE module with a very tight setting for detecting radio link failure to meet 5G strict standards. Proposed method succeeded in improving the performance of the handover process at high-speed scenarios by 50%, only with the help of radio link quality information. The main advantage of the proposed method is the proper management of the handover procedure, independent of UE's velocity, as well as its simple structure with few rules, which makes it suitable for use in UAV and IoT devices.
+
+# Fuzzy Model Integration for ns3 Simulation
+
+The primary objective of this project is to integrate a fuzzy model into ns3 simulations. The fuzzy model is developed in Python using the PyIT2FLS package. To ensure an effective simulation, it is crucial to establish seamless data transmission between ns3 and Python while the ns3 project is running. In order to achieve this, we have introduced Python connection capabilities and integrated a set of header files into the ns3 framework.
+
+## Implementation Details
+
+The following files have been implemented to simulate and port ns3 data to Python:
+
+1. **Proposed Scenario File:**
+   - Location: `scratch/fuzzyH.cc`
+   - Description: This file contains the proposed scenario for the ns3 simulation.
+
+2. **Fuzzy Type I Algorithm (Implemented in Python):**
+   - Location: `lte/model/fuzzy/type1fuzzy.py`
+   - Description: This file implements the fuzzy Type I algorithm in Python.
+
+3. **Fuzzy Type I Algorithm Interface Files:**
+   - Location:
+     - `lte/model/fuzzy-type1-handover-algorithm.h`
+     - `lte/model/fuzzy-type1-handover-algorithm.cc`
+   - Description: These files provide the interface for the fuzzy Type I algorithm implemented in Python.
+
+4. **Fuzzy Type II Algorithm (Implemented in Python):**
+   - Location: `lte/model/fuzzy/type2fuzzy.py`
+   - Description: This file implements the fuzzy Type II algorithm in Python.
+
+5. **Fuzzy Type II Algorithm Interface Files:**
+   - Location:
+     - `lte/model/fuzzy-type2-handover-algorithm.h`
+     - `lte/model/fuzzy-type2-handover-algorithm.cc`
+   - Description: These files provide the interface for the fuzzy Type II algorithm implemented in Python.
+
+## Usage
+
+To integrate the fuzzy model into ns3 simulations, follow these steps:
+
+1. Copy the proposed scenario file (`fuzzyH.cc`) to the appropriate location in your ns3 project.
+2. Import the fuzzy Type I and Type II algorithm files (`type1fuzzy.py` and `type2fuzzy.py`) into your Python project.
+3. Include the fuzzy Type I and Type II algorithm interface files (`fuzzy-type1-handover-algorithm.h`, `fuzzy-type1-handover-algorithm.cc`, `fuzzy-type2-handover-algorithm.h`, `fuzzy-type2-handover-algorithm.cc`) in your ns3 project.
+4. Configure the necessary parameters and functions to utilize the fuzzy model in your ns3 simulation.
+
+## Citation
+
+If you use this code or find our work helpful in your research, please consider citing the following paper:
+[Handover Triggering Estimation based on Fuzzy Logic for LTE-A/5G Networks with Ultra Dense Small Cells](https://rdcu.be/dbxVC)
+
+## Acknowledgments
+
+We would like to express our gratitude to the developers of the PyIT2FLS package and the ns3 framework for their valuable contributions.
+
+For any questions or inquiries, please contact us.
+
+
 The Network Simulator, Version 3
 ================================
 
